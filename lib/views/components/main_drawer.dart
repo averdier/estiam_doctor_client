@@ -63,7 +63,7 @@ class MainDrawer extends StatelessWidget {
               title: new Text('Commands'),
               onTap: () {
                 print('You pressed Commands');
-                Navigator.of(context).pushReplacementNamed('/commands');
+                Navigator.of(context).pushReplacementNamed('/doctors/details');
               }
           ),
 

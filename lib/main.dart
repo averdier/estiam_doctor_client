@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:estiam_doctor_client/views/command_list_screen.dart';
 import 'package:estiam_doctor_client/views/home_screen.dart';
 import 'package:estiam_doctor_client/views/doctor_details_screen.dart';
 import 'package:estiam_doctor_client/views/doctor_list_screen.dart';
@@ -36,7 +35,6 @@ class DoctorApp extends StatelessWidget {
             '/main': (BuildContext context) => new MainScreen(),
             '/doctors': (BuildContext context) => new DoctorListScreen(),
             '/doctors/details': (BuildContext context) => new DoctorDetailsScreen(),
-            '/commands': (BuildContext context) => new CommandListScreen()
           }
         )
       )
