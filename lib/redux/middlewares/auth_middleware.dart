@@ -8,12 +8,37 @@ import 'package:redux/redux.dart';
 /// Create and return auth middleware
 List<Middleware<AppState>> createAuthMiddleware() => <Middleware<AppState>>[
   new TypedMiddleware<AppState, UserLoginRequest>(logIn),
+  new TypedMiddleware<AppState, UserLogoutRequest>(logOut),
 ];
 
 final logIn = _login();
+final logOut = _logout();
 
 /// Login user
 Middleware<AppState> _login() {
+  return (Store store, action, NextDispatcher next) async {
+
+    if (action is UserLoginRequest) {
+
+      if (action.username == 'asd' && action.password == 'asd') {
+
+        store.dispatch(new UserLoginSuccess(
+            new User('placeholder_token', 'placeholder_id')));
+
+        Navigator.of(action.context)
+            .pushNamedAndRemoveUntil('/main', (_) => false);
+      } else {
+        store.dispatch(
+            new UserLoginFailure('Username or password were incorrect.'));
+      }
+    }
+
+    next(action);
+  };
+}
+
+/// Logout user
+Middleware<AppState> _logout() {
   return (Store store, action, NextDispatcher next) async {
 
     if (action is UserLoginRequest) {

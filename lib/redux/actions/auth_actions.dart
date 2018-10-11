@@ -30,6 +30,8 @@ class UserLoginFailure {
   UserLoginFailure(this.error);
 }
 
+
+class UserLogout
 /// On user logout
 class UserLogout {}
 
