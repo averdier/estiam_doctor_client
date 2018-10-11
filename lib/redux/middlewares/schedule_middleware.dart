@@ -8,40 +8,41 @@ import 'package:redux/redux.dart';
 
 
 List<Middleware<AppState>> createScheduleMiddleware() => <Middleware<AppState>> [
-  new TypedMiddleware<AppState, ScheduleListRequest>(getSchedules)
+  new TypedMiddleware<AppState, ScheduleListRequest>(getSchedules),
+  new TypedMiddleware<AppState, ScheduleRequest>(doSchedule),
 ];
 
 
 final getSchedules = _getSchedules();
+final doSchedule = _doSchedule();
 
 Middleware<AppState> _getSchedules() {
   return (Store store, action, NextDispatcher next) async {
     if (action is ScheduleListRequest) {
-      QuerySnapshot querySnapshot = await Firestore.instance.collection("reservations").where('doctorId', isEqualTo: action.doctorId).getDocuments();
+      QuerySnapshot querySnapshot = await Firestore.instance.collection("reservations").where('userId', isEqualTo: action.doctorId).getDocuments();
       var list = querySnapshot.documents;
       store.dispatch(ScheduleListRequestSuccess(list.map((i) => new Schedule.fromSnapshot(i)).toList()));
     }
   };
 }
 
-Middleware<AppState> _getPossibleSchedules() {
+Middleware<AppState> _doSchedule() {
   return (Store store, action, NextDispatcher next) async {
-    if (action is SchedulePossibleListRequest) {
-      var now = DateTime.now();
-      QuerySnapshot querySnapshot = await Firestore.instance.collection("reservations").orderBy('reservationDateTime').startAt([new DateTime.utc(now.year, now.month, now.day)]).where('doctorId', isEqualTo: action.doctorId).getDocuments();
+    print('========================================================');
+    if (action is ScheduleRequest) {
+      QuerySnapshot querySnapshot = await Firestore.instance.collection("reservations").orderBy('reservationDateTime').startAt([action.dateTime.add(new Duration(minutes: -30))]).endAt([action.dateTime.add(new Duration(minutes: 30))]).where('userId', isEqualTo: action.doctorId).getDocuments();
 
       var list = querySnapshot.documents.map((i) => new Schedule.fromSnapshot(i)).toList();
-      List<DateTime> possibles = new List<DateTime>();
-
-      var start = DateTime.utc(now.year, now.month, now.day, 9);
-
-      for (var i = 0; i < list.length; i++) {
-
+      print('========================================================');
+      if (list.length == 0) {
+        var schedule = new Schedule(action.user.id, action.user.name, action.user.phone, action.doctorId, action.dateTime);
+        Firestore.instance.collection('reservations').document().setData(schedule.toJSON());
+        //store.dispatch(ScheduleRequestSuccess(schedule));
+        store.dispatch(ScheduleRequestSuccessEmpty());
+      }
+      else {
+        store.dispatch(ScheduleRequestFailure('Already exist'));
       }
     }
   };
-}
-
-List<DateTime> getPossibles(DateTime start, DateTime end) {
-
 }

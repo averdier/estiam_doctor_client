@@ -57,16 +57,6 @@ class MainDrawer extends StatelessWidget {
             }
           ),
 
-          /// Commands section
-          new ListTile(
-              leading: new Icon(Icons.library_books),
-              title: new Text('Commands'),
-              onTap: () {
-                print('You pressed Commands');
-                Navigator.of(context).pushReplacementNamed('/doctors/details');
-              }
-          ),
-
           /// Logout
           new Divider(),
           new ListTile(

@@ -1,5 +1,6 @@
 
 import 'package:estiam_doctor_client/models/schedule.dart';
+import 'package:estiam_doctor_client/models/user.dart';
 
 /// On schedule list request
 class ScheduleListRequest {
@@ -22,21 +23,24 @@ class ScheduleListRequestFailure {
   ScheduleListRequestFailure(this.error);
 }
 
-class SchedulePossibleListRequest {
+class ScheduleRequest {
+  final User user;
   final String doctorId;
   final DateTime dateTime;
 
-  SchedulePossibleListRequest(this.doctorId, this.dateTime);
+  ScheduleRequest(this.user, this.doctorId, this.dateTime);
 }
 
-class SchedulePossibleListRequestSuccess {
-  final List<DateTime> possibles;
+class ScheduleRequestSuccess {
+  final Schedule schedule;
 
-  SchedulePossibleListRequestSuccess(this.possibles);
+  ScheduleRequestSuccess(this.schedule);
 }
 
-class SchedulePossibleListRequestFailure {
+class ScheduleRequestSuccessEmpty {}
+
+class ScheduleRequestFailure {
   final String error;
 
-  SchedulePossibleListRequestFailure(this.error);
+  ScheduleRequestFailure(this.error);
 }

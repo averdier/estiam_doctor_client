@@ -1,8 +1,7 @@
+import 'package:estiam_doctor_client/views/forms/appointment_form.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:estiam_doctor_client/views/components/main_drawer.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:datetime_picker_formfield/time_picker_formfield.dart';
 
 
 void main() => runApp(new DoctorAppointmentScreen());
@@ -53,58 +52,7 @@ class _DoctorAppointmentScreenState extends State<DoctorAppointmentScreenHome> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text("Dr. Sullivan Fabre"),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: Text("Choisir le créneau", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Text("Jour", style: new TextStyle(fontWeight: FontWeight.bold)),
-                    ),
-                    DateTimePickerFormField(
-                      format: dateFormat,
-                      onChanged: (date) {
-                        Scaffold
-                            .of(context)
-                            .showSnackBar(SnackBar(content: Text('$date')));
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Text("Horaire", style: new TextStyle(fontWeight: FontWeight.bold)),
-                    ),
-                    TimePickerFormField(
-                      format: timeFormat,
-                      onChanged: (time) {
-                        Scaffold
-                            .of(context)
-                            .showSnackBar(SnackBar(content: Text('$time')));
-                      },
-                    ),
-
-                    DateTimePickerFormField(
-                      format: dateFormat,
-                      enabled: false,
-                    ),
-                    TimePickerFormField(
-                      format: toDateFormat(TimeOfDayFormat.HH_colon_mm),
-                      enabled: false,
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: Center(
-                          child: RaisedButton(
-                              child: new Text('Sauvegarder'),
-                              onPressed: null,
-                              /*onPressed: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => DoctorAppointmentScreen()),
-                                );
-                              }*/
-                          ),
-                        )
-                    )
+                    new DoctorAppointmentForm()
                   ],
                 ),
               ),

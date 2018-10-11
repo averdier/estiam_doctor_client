@@ -15,7 +15,7 @@ class AppState {
   AppState({AuthState auth, DoctorState doctor, ScheduleState schedule}):
         auth = auth ?? new AuthState(),
         doctor = doctor ?? new DoctorState(doctors: new List<Doctor>()),
-        schedule = schedule ?? new ScheduleState(schedules: new List<Schedule>(), possibles: new List<DateTime>());
+        schedule = schedule ?? new ScheduleState(schedules: new List<Schedule>());
 
   static AppState rehydrationJSON(dynamic json) => new AppState(
       auth: new AuthState.fromJSON(json['auth']),
