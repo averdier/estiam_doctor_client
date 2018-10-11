@@ -6,7 +6,6 @@ import 'package:estiam_doctor_client/views/kebab_details_screen.dart';
 import 'package:estiam_doctor_client/views/kebab_list_screen.dart';
 import 'package:estiam_doctor_client/views/login_screen.dart';
 import 'package:redux_persist_flutter/redux_persist_flutter.dart';
-
 import 'package:estiam_doctor_client/redux/middlewares/middleware.dart';
 import 'package:estiam_doctor_client/redux/models/app_state.dart';
 import 'package:estiam_doctor_client/redux/stores/app_store.dart';
@@ -16,7 +15,6 @@ void main() => runApp(new DoctorApp());
 
 class DoctorApp extends StatelessWidget {
   final store = createStore();
-
   /// Constructor
   DoctorApp();
 

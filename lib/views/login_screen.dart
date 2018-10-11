@@ -1,34 +1,46 @@
+import 'package:estiam_doctor_client/views/auth_button_container.dart';
 import 'package:flutter/material.dart';
-import 'package:estiam_doctor_client/styles/colors.dart';
-import 'package:estiam_doctor_client/views/forms/login_form.dart';
 
 
 class LoginScreen extends StatelessWidget {
   
   /// Constructor
   LoginScreen({Key key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
+    var pageSize = MediaQuery.of(context).size;
     return new Scaffold(
-      body: new Container(
-        child: new Padding(
-          padding: new EdgeInsets.fromLTRB(32.0, MediaQuery.of(context).padding.top + 32.0, 32.0, 32.0),
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              new Expanded(
-                  child: new Center(
-                    child: new FlutterLogo(
-                      colors: colorStyles['primary'],
-                      size: 200.0
-                    )
-                  )
+      body: new Stack(
+        children: <Widget>[
+          new Container(
+            alignment: Alignment.center,
+            width: pageSize.width,
+            height: pageSize.height,
+            decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                stops: [0.2, 1.0],
+                colors: [
+                  const Color(0xFF3744B0),
+                  const Color(0xFF3799B0),
+                ],
               ),
-              new LoginForm()
-            ],
-          )
-        )
+            ),
+            child: new Container(
+              height: 400.0,
+              child: new Column(
+                children: <Widget>[
+                  new Padding(
+                    padding: const EdgeInsets.only(top: 128.0),
+                    child: new GoogleAuthButtonContainer(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

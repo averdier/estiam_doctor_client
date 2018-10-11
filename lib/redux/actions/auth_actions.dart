@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:estiam_doctor_client/models/user.dart';
@@ -6,12 +5,10 @@ import 'package:estiam_doctor_client/redux/models/app_state.dart';
 
 /// On login request
 class UserLoginRequest {
-  final BuildContext context;
-  final String username;
-  final String password;
 
+  final BuildContext context;
   /// Constructor
-  UserLoginRequest(this.context, this.username, this.password);
+  UserLoginRequest(this.context);
 }
 
 /// On login success
@@ -30,8 +27,6 @@ class UserLoginFailure {
   UserLoginFailure(this.error);
 }
 
-
-class UserLogout
 /// On user logout
 class UserLogout {}
 

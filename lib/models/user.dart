@@ -1,25 +1,28 @@
 /// Represent user of app
 class User {
-  final String token;
+  final String name;
   final String id;
+  final String phone;
 
   /// Constructor
-  User(this.token, this.id);
+  User(this.name, this.id, this.phone);
 
   /// Return user in JSON
   Map<String, dynamic> toJSON() => <String, dynamic>{
-    'token': this.token,
-    'id': this.id
+    'name': this.name,
+    'id': this.id,
+    'phone': this.phone,
   };
 
   /// Create user from JSON
   factory User.fromJSON(Map<String, dynamic> json) => new User(
-    json['token'],
+    json['name'],
     json['id'],
+    json['phone'],
   );
 
   @override
   String toString() {
-    return '{token: $token, id: $id}';
+    return '{name: $name, id: $id, phone: $phone}';
   }
 }
