@@ -4,7 +4,7 @@ import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_persist_flutter/redux_persist_flutter.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:estiam_doctor_client/redux/middlewares/auth_middleware.dart';
-import 'package:estiam_doctor_client/redux/middlewares/kebab_middleware.dart';
+import 'package:estiam_doctor_client/redux/middlewares/doctor_middleware.dart';
 import 'package:estiam_doctor_client/redux/models/app_state.dart';
 
 final persistor = new Persistor<AppState>(
@@ -16,4 +16,4 @@ List<Middleware<AppState>> createMiddleware() => <Middleware<AppState>>[
   thunkMiddleware,
   persistor.createMiddleware(),
   new LoggingMiddleware.printer(),
-]..addAll(createAuthMiddleware())..addAll(createKebabMiddleware());
+]..addAll(createAuthMiddleware())..addAll(createDoctorMiddleware());

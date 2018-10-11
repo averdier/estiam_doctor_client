@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:estiam_doctor_client/views/command_list_screen.dart';
 import 'package:estiam_doctor_client/views/home_screen.dart';
-import 'package:estiam_doctor_client/views/kebab_details_screen.dart';
-import 'package:estiam_doctor_client/views/kebab_list_screen.dart';
+import 'package:estiam_doctor_client/views/doctor_details_screen.dart';
+import 'package:estiam_doctor_client/views/doctor_list_screen.dart';
 import 'package:estiam_doctor_client/views/login_screen.dart';
 import 'package:redux_persist_flutter/redux_persist_flutter.dart';
 import 'package:estiam_doctor_client/redux/middlewares/middleware.dart';
@@ -26,7 +26,7 @@ class DoctorApp extends StatelessWidget {
       builder: (context) => new StoreProvider<AppState>(
         store: store,
         child: new MaterialApp(
-          title: 'KebabApp',
+          title: 'FindADoctor',
           routes: <String, WidgetBuilder>{
             '/': (BuildContext context) => new StoreConnector<AppState, dynamic>(
                 converter: (store) => store.state.auth.isAuthenticated,
@@ -34,8 +34,8 @@ class DoctorApp extends StatelessWidget {
             ),
             '/login': (BuildContext context) => new LoginScreen(),
             '/main': (BuildContext context) => new MainScreen(),
-            '/kebabs': (BuildContext context) => new KebabListScreen(),
-            '/kebabs/details': (BuildContext context) => new KebabDetailsScreen(),
+            '/doctors': (BuildContext context) => new DoctorListScreen(),
+            '/doctors/details': (BuildContext context) => new DoctorDetailsScreen(),
             '/commands': (BuildContext context) => new CommandListScreen()
           }
         )

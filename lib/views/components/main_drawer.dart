@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:estiam_doctor_client/redux/actions/auth_actions.dart';
-import 'package:estiam_doctor_client/redux/actions/kebab_actions.dart';
+import 'package:estiam_doctor_client/redux/actions/doctor_actions.dart';
 import 'package:estiam_doctor_client/redux/models/app_state.dart';
 import 'package:estiam_doctor_client/styles/colors.dart';
 
@@ -44,16 +44,16 @@ class MainDrawer extends StatelessWidget {
               }
           ),
 
-          /// Kebabs section
+          /// Doctors section
           new ListTile(
             leading: new Icon(Icons.shopping_basket),
-            title: new Text('Kebabs'),
+            title: new Text('Doctors'),
             onTap: () {
-              print('You pressed Kebabs');
+              print('You pressed Doctors');
               StoreProvider.of<AppState>(context).dispatch(
-                  new KebabListRequest()
+                  new DoctorListRequest()
               );
-              Navigator.of(context).pushReplacementNamed('/kebabs');
+              Navigator.of(context).pushReplacementNamed('/doctors');
             }
           ),
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:estiam_doctor_client/models/kebab.dart';
+import 'package:estiam_doctor_client/models/doctor.dart';
 
-class KebabDetailsHeader extends StatelessWidget {
-  final Kebab kebab;
+class DoctorDetailsHeader extends StatelessWidget {
+  final Doctor doctor;
 
   /// Constructor
-  KebabDetailsHeader(this.kebab);
+  DoctorDetailsHeader(this.doctor);
 
   @override
   Widget build(BuildContext context) {

@@ -11,12 +11,12 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Kebab App')
+        title: new Text('FindADoctor')
       ),
       body: new Center(
         child: new Column(
           children: <Widget>[
-            new Text('Kebab App')
+            new Text('FindADoctor')
           ],
         )
       ),

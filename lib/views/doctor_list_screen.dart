@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:estiam_doctor_client/redux/actions/kebab_actions.dart';
+import 'package:estiam_doctor_client/redux/actions/doctor_actions.dart';
 import 'package:estiam_doctor_client/redux/models/app_state.dart';
 import 'package:redux/redux.dart';
-import 'package:estiam_doctor_client/models/kebab.dart';
+import 'package:estiam_doctor_client/models/doctor.dart';
 import 'package:estiam_doctor_client/views/components/main_drawer.dart';
 
-class KebabListScreen extends StatelessWidget {
+class DoctorListScreen extends StatelessWidget {
 
   /// Constructor
-  KebabListScreen({Key key}) : super(key: key);
+  DoctorListScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Kebab App')
+        title: new Text('FindADoc')
       ),
       body: new StoreConnector<AppState, _ViewModel>(
         converter: (Store<AppState> store) {
@@ -23,7 +23,7 @@ class KebabListScreen extends StatelessWidget {
           return vm;
         },
         builder: (BuildContext context, vm) {
-          return _buildKebabList(context, vm.kebabs);
+          return _buildDoctorList(context, vm.doctors);
         }
       ),
       drawer: new MainDrawer(),
@@ -31,40 +31,40 @@ class KebabListScreen extends StatelessWidget {
   }
   
   /// Create kebabs list
-  Widget _buildKebabList(BuildContext context, List<Kebab> kebabs) {
+  Widget _buildDoctorList(BuildContext context, List<Doctor> doctors) {
     return ListView.builder(
-      itemCount: kebabs.length,
+      itemCount: doctors.length,
       itemBuilder: (context, i) {
-        return _buildKebabRow(context, kebabs.elementAt(i));
+        return _buildDoctorRow(context, doctors.elementAt(i));
       },
     );
   }
   
   /// Create row from kebab
-  Widget _buildKebabRow(BuildContext context, Kebab kebab) {
+  Widget _buildDoctorRow(BuildContext context, Doctor doctor) {
     return ListTile(
-      title: new Text(kebab.name),
-      subtitle: new Text(kebab.price.toString() + ' €'),
+      title: new Text(doctor.name),
+      subtitle: new Text(doctor.officeName.toString()),
       onTap: () {
-        print(kebab.toString() + ' tapped');
+        print(doctor.toString() + ' tapped');
         StoreProvider.of<AppState>(context).dispatch(
-          new KebabRequest(kebab.name)
+          new DoctorRequest(doctor.name, doctor.officeName, doctor.phoneNumber, doctor.userId)
         );
-        Navigator.of(context).pushNamed('/kebabs/details');
+        Navigator.of(context).pushNamed('/doctors/details');
       }
     );
   }
 }
 
 class _ViewModel {
-  final List<Kebab> kebabs;
+  final List<Doctor> doctors;
 
   /// Constructor
   _ViewModel({
-    @required this.kebabs
+    @required this.doctors
   });
 
   static _ViewModel fromStore(Store<AppState> store) {
-    return new _ViewModel(kebabs: store.state.kebab.kebabs);
+    return new _ViewModel(doctors: store.state.doctor.doctors);
   }
 }
