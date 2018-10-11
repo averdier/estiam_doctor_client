@@ -28,12 +28,24 @@ class UserLoginFailure {
 }
 
 /// On user logout
-class UserLogout {}
+class UserLogout {
+  final BuildContext context;
 
-/// Logout user and go to login
-final Function logout = (BuildContext context) {
-  return (Store<AppState> store) {
-    store.dispatch(new UserLogout());
-    Navigator.of(context).pushNamedAndRemoveUntil('/login', (_) => false);
-  };
-};
+  UserLogout(this.context);
+}
+
+class LogOutSuccessful {
+  LogOutSuccessful();
+  @override
+  String toString() {
+    return 'LogOut{user: null}';
+  }
+}
+
+class LogOutFail {
+  final dynamic error;
+  LogOutFail(this.error);
+  String toString() {
+    return '{There was an error logging out: $error}';
+  }
+}

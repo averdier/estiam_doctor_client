@@ -5,7 +5,7 @@ import 'package:redux/redux.dart';
 Reducer<AuthState> authReducer = combineReducers([
   new TypedReducer<AuthState, UserLoginSuccess>(userLoginSuccessReducer),
   new TypedReducer<AuthState, UserLoginFailure>(userLoginFailureReducer),
-  new TypedReducer<AuthState, UserLogout>(userLogoutReducer)
+  new TypedReducer<AuthState, LogOutSuccessful>(userLogoutReducer)
 ]);
 
 /// On user login success, save logged in state
@@ -27,6 +27,6 @@ AuthState userLoginFailureReducer(AuthState state, UserLoginFailure action) {
 }
 
 /// On user logout, clean state
-AuthState userLogoutReducer(AuthState state, UserLogout action) {
+AuthState userLogoutReducer(AuthState state, LogOutSuccessful action) {
   return new AuthState();
 }

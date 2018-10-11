@@ -74,7 +74,7 @@ class MainDrawer extends StatelessWidget {
             title: new Text('Sign out'),
             onTap: () {
               StoreProvider.of<AppState>(context).dispatch(
-                new UserLogout()
+                new UserLogout(context)
               );
               Navigator.of(context).pushNamedAndRemoveUntil('/login', (_) => false);
             },
