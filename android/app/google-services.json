@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "919269692902",
+    "firebase_url": "https://fluttertp.firebaseio.com",
+    "project_id": "fluttertp",
+    "storage_bucket": "fluttertp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919269692902:android:02ba6825216a1cd5",
+        "android_client_info": {
+          "package_name": "dev.rastadev.estiamdoctorclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919269692902-65p0nk1ujugjn3lkacuveucuee1pn9vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgzzlomTwJBE3U8nvTTOoCDdGZBC11Uxg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
