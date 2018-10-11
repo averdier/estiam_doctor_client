@@ -13,28 +13,32 @@ class LoginScreen extends StatelessWidget {
     return new Scaffold(
       body: new Stack(
         children: <Widget>[
-          new Container(
+          Container(
             alignment: Alignment.center,
             width: pageSize.width,
             height: pageSize.height,
             decoration: new BoxDecoration(
               gradient: new LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
                 stops: [0.2, 1.0],
                 colors: [
-                  const Color(0xFF3744B0),
-                  const Color(0xFF3799B0),
+                  Colors.blue,
+                  Colors.white70,
                 ],
               ),
             ),
-            child: new Container(
+            child: Container(
               height: 400.0,
-              child: new Column(
+              child: Column(
                 children: <Widget>[
                   new Padding(
-                    padding: const EdgeInsets.only(top: 128.0),
-                    child: new GoogleAuthButtonContainer(),
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: new Image.network('https://sstrndashboard.azurewebsites.net/assets/pictures/logo.png')
+                  ),
+                  new Padding(
+                    padding: const EdgeInsets.only(top: 118.0),
+                    child: GoogleAuthButtonContainer(),
                   ),
                 ],
               ),
